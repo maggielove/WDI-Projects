@@ -61,24 +61,22 @@ THE WINNER is the one with the most cash.
 
 The board- Round 1/ Jeopardy: 
 
-    -6 categories
+6 categories
     
-    * 5 questions per category, worth $100 to $500 
+* 5 questions per category, worth $100 to $500 
     
-	      * one Daily Double card. 
-	      
-    * Daily Double sound and purple color. 
+	 * one Daily Double card. (Daily Double sound and purple color.)
 
 
 The board- Round 2/ Double Jeopardy: 
-    * 6 categories
-    * 5 questions per category, worth $200 to $1,0000 (double what they are in the jeopardy round). 
-	      * two Daily Double cards. 
-    * this should have the Daily Double sound and a different (purple?) style.
+6 categories
+* 5 questions per category, worth $200 to $1,0000 (double what they are in the jeopardy round). 
+* two Daily Double cards. 
+* this should have the Daily Double sound and a different (purple?) style.
 
 
 The board- Round 3/ Final Jeopardy: 
-    * A single category. 
+* A single category. 
 
 Get the questions/ categories from: [http://www.j-archive.com/] (for now). (Cite source.) 
 
