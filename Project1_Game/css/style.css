@@ -1,6 +1,6 @@
 #title {
   text-align: center;
-  text-transform: uppercase; 
+  text-transform: uppercase;
   font-family: "Helvetica", sans-serif;
   color: #B8B800;
 }
@@ -15,6 +15,21 @@
 #first-board {
 
 }
+
+.card {
+  width: 200px;
+  height: 200px;
+  display: inline-block;
+  border-radius: 5px;
+  background-color: #5C85AD;
+}
+
+.row {
+  width: 1200px;
+  height: 200px;
+  border: solid 1px black;
+}
+
 
 .column {
   width: 140px;
@@ -39,7 +54,7 @@
   background-color: #4747FF;
 }
 
-.question {
+/*.question {
   font-family: "Helvetica", sans-serif;
   text-align: center;
   width: 140px;
@@ -50,7 +65,7 @@
   list-style-type: none;
   margin: 0px;
   padding: 5px;
-}
+}*/
 
 .question-list {
 
