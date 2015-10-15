@@ -19,6 +19,7 @@
 .card {
   width: 200px;
   height: 200px;
+  font-size: 20px;
   display: inline-block;
   border-radius: 5px;
   background-color: #5C85AD;
