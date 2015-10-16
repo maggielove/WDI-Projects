@@ -86,7 +86,25 @@ var answers =
     "A30"
   ];
 
-  // var turn = "Player 1";
+  var player = 'playerOne';
+
+
+
+  // function keyListener(event){
+  //   event = event || window.event;
+  //   var key = event.key || event.which || event.keyCode;
+  //   KeypressFunctions[key].call();
+  // }
+
+  // var choosePlayer = function(event){
+  //   if (event.which == a) {
+  //     player = 'playerOne';
+  //   } else if (event.which == l) {
+  //     player = 'playerTwo';
+  //   }
+  // };
+  //
+  // choosePlayer();
 
   var renderBoard = function() {
 
@@ -105,8 +123,8 @@ var answers =
 
        if ((i >= 0) && (i <= 5)) {
         row.id = 'category-name';
-      }
-      else if ((i >= 6) && (i <=11)) {
+       }
+       else if ((i >= 6) && (i <=11)) {
         row.id = '100-question';
         card.value = 100;
         var cardLabel = document.createElement('h2');
@@ -145,24 +163,66 @@ var answers =
     };
   //ends renderBoard function
 
-  var setListeners = function() {
 
+
+  var setListeners = function() {
+    var cards = document.getElementsByClassName('card');
+    var playerCash = 0;
+    var playerGuess;
     for ( var i = 0; i < gameBoard.length; i++) {
-      var cards = document.getElementsByClassName('card');
       // var label = document.getElementsByClassName()
       cards[i].addEventListener('click', function() {
-        var cardAmount = this.value;
+        var cardAmount = parseInt(this.value);
+        console.log(cardAmount);
         var cardLabel = this.children[0];
         var question = document.createElement('div');
+        var answer = answers[ this.id - 6];
         question.className = 'question';
         question.innerHTML = questions[ this.id - 6 ]
         this.appendChild(question);
         question.style.display = '';
         cardLabel.style.display = 'none';
-        console.log(this);
+
         setTimeout(function(){
-         window.prompt('Type your answer here:');
-          }, 5000)
+
+          window.addEventListener('keyup', function(e) {
+            if (e.which === 65) {
+              var player = 'playerOne';
+            } else if (e.which === 76) {
+              var player = 'playerTwo';
+            } else {
+              alert('Please press A or L.');
+            }
+            console.log(player);
+          })
+
+          var playerGuess = window.prompt('Type your answer here:');
+          if ( playerGuess === answer) {
+            playerCash += cardAmount;
+            window.alert('Well played!');
+          } else {
+            playerCash -= cardAmount;
+            window.alert('I\'m afraid not.');
+          }
+          console.log(playerCash);
+
+          var getScore = function(player) {
+            if (player === 'playerOne') {
+              var total = document.getElementsByClassName('score')[0];
+              total.innerHTML = '<h5>' + playerCash + '</h5>'
+            } else if (player === 'playerTwo') {
+              var total = document.getElementsByClassName('score')[1];
+              total.innerHTML = '<h5>' + playerCash + '</h5>';
+            }
+          };
+
+          getScore(player);
+          // var playerOneScore = document.getElementById('player-one-score');
+          // var playerOneScore = document.getElementById('player-two-score');
+        }, 6000)
+
+
+        // checkAnswer();
         //   for (var f = 0; f < gameBoard.length; f++) {
         //   var cardWorth = document.getElementsByTagName('h2')[f];
         //  };
@@ -170,6 +230,13 @@ var answers =
       });
     }
   };
+
+// need to  link to gameboard!
+//   var checkAnswer = function() {
+//   for ( var i = 0; i < gameBoard.length; i++) {
+//
+//   }
+// }
 
   renderBoard();
   setListeners();

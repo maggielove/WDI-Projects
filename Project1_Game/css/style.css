@@ -1,7 +1,10 @@
+body {
+  font-family: "Helvetica", sans-serif;
+}
+
 #title {
   text-align: center;
   text-transform: uppercase;
-  font-family: "Helvetica", sans-serif;
   color: #B8B800;
 }
 
@@ -9,7 +12,7 @@
   width: 1200px;
   height: 700px;
   border: 1px solid black;
-  margin: 0 auto;
+  margin-left: 100px;
 }
 
 #first-board {
@@ -18,8 +21,8 @@
 
 .card {
   position: relative;
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   font-size: 20px;
   display: inline-block;
   border-radius: 5px;
@@ -41,8 +44,8 @@ h2 {
 }
 
 .row {
-  width: 1200px;
-  height: 200px;
+  width: 900px;
+  height: 150px;
   border: solid 1px black;
 }
 
@@ -70,6 +73,7 @@ h2 {
   background-color: #4747FF;
 }
 
+
 /*.question {
   font-family: "Helvetica", sans-serif;
   text-align: center;
@@ -83,6 +87,26 @@ h2 {
   padding: 5px;
 }*/
 
-.question-list {
+#score-box {
+  width: 300px;
+  height: 300px;
+  border: 2px solid black;
+  float: right;
+  margin-right: 50px;
+}
+
+#player-one-scorebox {
+  width: 300px;
+  height: 100px;
+  border: 1px dotted #5C85AD;
+}
+
+#player-two-scorebox {
+  width: 300px;
+  height: 100px;
+  border: 1px dotted #5C85AD;
+}
+
+.score {
 
 }
