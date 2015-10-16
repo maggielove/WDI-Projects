@@ -6,6 +6,8 @@
 //   }
 // }
 
+ var player = '';
+
 window.onload = function() {
 
   var gameBoard =
@@ -86,26 +88,6 @@ var answers =
     "A30"
   ];
 
-  var player = 'playerOne';
-
-
-
-  // function keyListener(event){
-  //   event = event || window.event;
-  //   var key = event.key || event.which || event.keyCode;
-  //   KeypressFunctions[key].call();
-  // }
-
-  // var choosePlayer = function(event){
-  //   if (event.which == a) {
-  //     player = 'playerOne';
-  //   } else if (event.which == l) {
-  //     player = 'playerTwo';
-  //   }
-  // };
-  //
-  // choosePlayer();
-
   var renderBoard = function() {
 
     for (var i = 0; i < gameBoard.length; i++) {
@@ -160,14 +142,24 @@ var answers =
       }
       //ends the for loop
 
+      window.addEventListener('keyup', function(e) {
+        if (e.which === 65) {
+          player = 'playerOne';
+        } else if (e.which === 76) {
+          player = 'playerTwo';
+        } else {
+          alert('Please press A or L.');
+        }
+        console.log(player);
+        // return player;
+      })
+
     };
   //ends renderBoard function
 
-
-
   var setListeners = function() {
     var cards = document.getElementsByClassName('card');
-    var playerCash = 0;
+    var playerCash = 0; 
     var playerGuess;
     for ( var i = 0; i < gameBoard.length; i++) {
       // var label = document.getElementsByClassName()
@@ -183,18 +175,9 @@ var answers =
         question.style.display = '';
         cardLabel.style.display = 'none';
 
-        setTimeout(function(){
 
-          window.addEventListener('keyup', function(e) {
-            if (e.which === 65) {
-              var player = 'playerOne';
-            } else if (e.which === 76) {
-              var player = 'playerTwo';
-            } else {
-              alert('Please press A or L.');
-            }
-            console.log(player);
-          })
+
+        setTimeout(function(){
 
           var playerGuess = window.prompt('Type your answer here:');
           if ( playerGuess === answer) {
@@ -219,7 +202,7 @@ var answers =
           getScore(player);
           // var playerOneScore = document.getElementById('player-one-score');
           // var playerOneScore = document.getElementById('player-two-score');
-        }, 6000)
+        }, 1000)
 
 
         // checkAnswer();
