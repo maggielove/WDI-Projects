@@ -11,7 +11,11 @@ window.onload = function() {
 
   var gameBoard =
   [
+<<<<<<< HEAD
     "&nbsp", "&nbsp", "&nbsp","&nbsp", "&nbsp", "&nbsp",
+=======
+    "4-Letter Verbs", "&nbsp", "&nbsp","&nbsp", "&nbsp", "&nbsp",
+>>>>>>> master
     "&nbsp", "&nbsp", "&nbsp", "&nbsp", "&nbsp", "&nbsp",
     "&nbsp", "&nbsp", "&nbsp", "&nbsp", "&nbsp", "&nbsp",
     "&nbsp", "&nbsp", "&nbsp", "&nbsp", "&nbsp", "&nbsp",
@@ -19,6 +23,7 @@ window.onload = function() {
     "&nbsp", "&nbsp", "&nbsp", "&nbsp", "&nbsp", "&nbsp"
   ];
 
+<<<<<<< HEAD
 var questions =
   [
     "Do you like dogs?",
@@ -35,6 +40,8 @@ var answers =
 
 
 
+=======
+>>>>>>> master
   // var turn = "Player 1";
 
   var renderBoard = function() {
@@ -46,6 +53,7 @@ var answers =
         row.className='row';
       }
 
+<<<<<<< HEAD
       var cardObject = {
         'question': questions[i],
         'answer':   answers[i]
@@ -53,6 +61,8 @@ var answers =
 
 
 
+=======
+>>>>>>> master
         var card = document.createElement('button');
         card.setAttribute('id', i);
         card.className = 'card';
@@ -101,6 +111,7 @@ var answers =
     };
   //ends renderBoard function
 
+<<<<<<< HEAD
   var setListeners = function() {
     var cards = document.getElementsByClassName('card');
     for ( var i = 0; i < gameBoard.length; i++) {
@@ -110,6 +121,35 @@ var answers =
         var cardLabel = this.children[0];
         var  question = document.createElement('p');
         var question = questions[i];
+=======
+var assignQA = function() {
+var id = gameBoard[i];
+    switch(id) {
+      case 6:
+      question = 'Do you like dogs?';
+      answer = 'yes';
+      break;
+      case 7:
+      question = 'Do you like cats?';
+      answer = 'meh';
+      break;
+      default:
+      question = null;
+      answer = null;
+      }
+    };
+
+  var setListeners = function() {
+
+    for ( var i = 0; i < gameBoard.length; i++) {
+      var card = document.getElementsByClassName('card')[i];
+      // var label = document.getElementsByClassName()
+      card.addEventListener('click', function() {
+        var cardAmount = this.value;
+        var cardLabel = this.children[0];
+        var  question = document.createElement('p');
+        question.innerHTML = assignQA(i);
+>>>>>>> master
         this.replaceChild(question, cardLabel);
         setTimeout(function(){
         window.prompt('Type your answer here:');
