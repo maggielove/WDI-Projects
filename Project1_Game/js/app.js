@@ -42,53 +42,77 @@ window.onload = function() {
       else if ((i >= 6) && (i <=11)) {
         row.id = '100-question';
         card.value = 100;
-        var cardAmount = document.createElement('h2');
-        cardAmount.innerHTML = '100';
-        card.appendChild(cardAmount);
+        var cardLabel = document.createElement('h2');
+        cardLabel.innerHTML = '100';
+        card.appendChild(cardLabel);
+
       } else if ((i >= 12) && (i <= 17)) {
         row.id = '200-question';
         card.value = 200;
-        var cardAmount = document.createElement('h2');
-        cardAmount.innerHTML = '200';
-        card.appendChild(cardAmount);
+        var cardLabel = document.createElement('h2');
+        cardLabel.innerHTML = '200';
+        card.appendChild(cardLabel);
       } else if ((i >= 18) && (i <= 23)) {
         row.id = '300-question';
         card.value = 300;
-        var cardAmount = document.createElement('h2');
-        cardAmount.innerHTML = '300';
-        card.appendChild(cardAmount);
+        var cardLabel = document.createElement('h2');
+        cardLabel.innerHTML = '300';
+        card.appendChild(cardLabel);
       } else if ((i >= 24) && (i <= 29)) {
         row.id = '400-question';
         card.value = 400;
-        var cardAmount = document.createElement('h2');
-        cardAmount.innerHTML = '400';
-        card.appendChild(cardAmount);
+        var cardLabel = document.createElement('h2');
+        cardLabel.innerHTML = '400';
+        card.appendChild(cardLabel);
       } else if ((i >= 30) && (i <= 35)){
         row.id = '500-question';
         card.value = 500;
-        var cardAmount = document.createElement('h2');
-        cardAmount.innerHTML = '500';
-        card.appendChild(cardAmount);
+        var cardLabel = document.createElement('h2');
+        cardLabel.innerHTML = '500';
+        card.appendChild(cardLabel);
         }
+
       }
-      //ends for loop
+      //ends the for loop
+
     };
   //ends renderBoard function
+
+var assignQA = function() {
+var id = gameBoard[i];
+    switch(id) {
+      case 6:
+      question = 'Do you like dogs?';
+      answer = 'yes';
+      break;
+      case 7:
+      question = 'Do you like cats?';
+      answer = 'meh';
+      break;
+      default:
+      question = null;
+      answer = null;
+      }
+    };
 
   var setListeners = function() {
 
     for ( var i = 0; i < gameBoard.length; i++) {
       var card = document.getElementsByClassName('card')[i];
-      var cardAmount = document.getElementsByTagName('h2');
+      // var label = document.getElementsByClassName()
       card.addEventListener('click', function() {
-        // var gameObject = { "pos": eventObject.target.id, "value": 'filler text' }
-      console.log(cardAmount[i]);
-      // console.log(eventObject.target.id);
-      window.prompt("Type your answer here.");
-      // console.log(cardAmount);
-      // console.log(cardAmount[i]);
-      // cardAmount.style.display = 'none';
-      console.log(card);
+        var cardAmount = this.value;
+        var cardLabel = this.children[0];
+        var  question = document.createElement('p');
+        question.innerHTML = assignQA(i);
+        this.replaceChild(question, cardLabel);
+        setTimeout(function(){
+        window.prompt('Type your answer here:');
+      }, 5000)
+        //   for (var f = 0; f < gameBoard.length; f++) {
+        //   var cardWorth = document.getElementsByTagName('h2')[f];
+        //  };
+        //   console.log(cardWorth);
       });
     }
   };
