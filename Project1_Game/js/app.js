@@ -1,6 +1,5 @@
 
 
-//
 // function checkAnswer() {
 //   if (input answer === "sire") {
 //     playerCash += question.value;
@@ -10,13 +9,81 @@
 window.onload = function() {
 
   var gameBoard =
+    [
+      "Blahblah", "&nbsp", "&nbsp","&nbsp", "&nbsp", "&nbsp",
+      "&nbsp", "&nbsp", "&nbsp", "&nbsp", "&nbsp", "&nbsp",
+      "&nbsp", "&nbsp", "&nbsp", "&nbsp", "&nbsp", "&nbsp",
+      "&nbsp", "&nbsp", "&nbsp", "&nbsp", "&nbsp", "&nbsp",
+      "&nbsp", "&nbsp", "&nbsp", "&nbsp", "&nbsp", "&nbsp",
+      "&nbsp", "&nbsp", "&nbsp", "&nbsp", "&nbsp", "&nbsp"
+    ];
+
+var questions =
   [
-    "4-Letter Verbs", "&nbsp", "&nbsp","&nbsp", "&nbsp", "&nbsp",
-    "&nbsp", "&nbsp", "&nbsp", "&nbsp", "&nbsp", "&nbsp",
-    "&nbsp", "&nbsp", "&nbsp", "&nbsp", "&nbsp", "&nbsp",
-    "&nbsp", "&nbsp", "&nbsp", "&nbsp", "&nbsp", "&nbsp",
-    "&nbsp", "&nbsp", "&nbsp", "&nbsp", "&nbsp", "&nbsp",
-    "&nbsp", "&nbsp", "&nbsp", "&nbsp", "&nbsp", "&nbsp"
+    "Question 1",
+    "Question 2",
+    "Question 3",
+    "Question 4",
+    "Question 5",
+    "Question 6",
+    "Question 7",
+    "Question 8",
+    "Question 9",
+    "Question 10",
+    "Question 11",
+    "Question 12",
+    "Question 13",
+    "Question 14",
+    "Question 15",
+    "Question 16",
+    "Question 17",
+    "Question 18",
+    "Question 19",
+    "Question 20",
+    "Question 21",
+    "Question 22",
+    "Question 23",
+    "Question 24",
+    "Question 25",
+    "Question 26",
+    "Question 27",
+    "Question 28",
+    "Question 29",
+    "Question 30",
+  ];
+
+var answers =
+  [
+    "A1",
+    "A2",
+    "A3",
+    "A4",
+    "A5",
+    "A6",
+    "A7",
+    "A8",
+    "A9",
+    "A10",
+    "A11",
+    "A12",
+    "A13",
+    "A14",
+    "A15",
+    "A16",
+    "A17",
+    "A18",
+    "A19",
+    "A20",
+    "A21",
+    "A22",
+    "A23",
+    "A24",
+    "A25",
+    "A26",
+    "A27",
+    "A28",
+    "A29",
+    "A30"
   ];
 
   // var turn = "Player 1";
@@ -78,37 +145,24 @@ window.onload = function() {
     };
   //ends renderBoard function
 
-var assignQA = function() {
-var id = gameBoard[i];
-    switch(id) {
-      case 6:
-      question = 'Do you like dogs?';
-      answer = 'yes';
-      break;
-      case 7:
-      question = 'Do you like cats?';
-      answer = 'meh';
-      break;
-      default:
-      question = null;
-      answer = null;
-      }
-    };
-
   var setListeners = function() {
 
     for ( var i = 0; i < gameBoard.length; i++) {
-      var card = document.getElementsByClassName('card')[i];
+      var cards = document.getElementsByClassName('card');
       // var label = document.getElementsByClassName()
-      card.addEventListener('click', function() {
+      cards[i].addEventListener('click', function() {
         var cardAmount = this.value;
         var cardLabel = this.children[0];
-        var  question = document.createElement('p');
-        question.innerHTML = assignQA(i);
-        this.replaceChild(question, cardLabel);
+        var question = document.createElement('div');
+        question.className = 'question';
+        question.innerHTML = questions[ this.id - 6 ]
+        this.appendChild(question);
+        question.style.display = '';
+        cardLabel.style.display = 'none';
+        console.log(this);
         setTimeout(function(){
-        window.prompt('Type your answer here:');
-      }, 5000)
+         window.prompt('Type your answer here:');
+          }, 5000)
         //   for (var f = 0; f < gameBoard.length; f++) {
         //   var cardWorth = document.getElementsByTagName('h2')[f];
         //  };
