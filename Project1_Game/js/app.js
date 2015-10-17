@@ -10,9 +10,13 @@
 
 window.onload = function() {
 
-  var gameBoard =
+  var categories =
     [
       "Blahblah", "&nbsp", "&nbsp","&nbsp", "&nbsp", "&nbsp",
+    ]
+
+  var gameBoard =
+    [
       "&nbsp", "&nbsp", "&nbsp", "&nbsp", "&nbsp", "&nbsp",
       "&nbsp", "&nbsp", "&nbsp", "&nbsp", "&nbsp", "&nbsp",
       "&nbsp", "&nbsp", "&nbsp", "&nbsp", "&nbsp", "&nbsp",
@@ -89,13 +93,16 @@ var answers =
   ];
 
   var renderBoard = function() {
+    // var container = document.createElement('div');
+    // container.id = 'container';
+    // document.body.appendChild(container);
 
-    for (var i = 0; i < gameBoard.length; i++) {
-      if (i% 6 === 0) {
-        var row = document.createElement('div');
-        document.body.appendChild(row);
-        row.className='row';
-      }
+      for (var i = 0; i < gameBoard.length; i++) {
+        if (i% 6 === 0) {
+          var row = document.createElement('div');
+          document.body.appendChild(row);
+          row.className='row';
+        }
 
         var card = document.createElement('button');
         card.setAttribute('id', i);
@@ -103,45 +110,53 @@ var answers =
         card.innerHTML = gameBoard[i];
         row.appendChild(card);
 
+        // if ((i >= 0) && (i <=5)) {
+        //   var category = document.createElement('div');
+        //   category.setAttribute('id', i);
+        //   category.className = 'category';
+        //   category.innerHTML = gameBoard[i];
+        //   var categoryRow = document.getElementsByClassName('row')[0];
+        //   console.log('This is category row', categoryRow);
+        //   categoryRow.appendChild(category);
+        //   console.log(category);
+
+
        if ((i >= 0) && (i <= 5)) {
-        row.id = 'category-name';
+         row.id = '100-question';
+         card.value = 100;
+         var cardLabel = document.createElement('h2');
+         cardLabel.innerHTML = '100';
+         card.appendChild(cardLabel);
         // var makeCategories = function() {
         //   this.disabled = true;
         //   };
         //   makeCategories();
        }
        else if ((i >= 6) && (i <=11)) {
-        row.id = '100-question';
-        card.value = 100;
-        var cardLabel = document.createElement('h2');
-        cardLabel.innerHTML = '100';
-        card.appendChild(cardLabel);
+         row.id = '200-question';
+         card.value = 200;
+         var cardLabel = document.createElement('h2');
+         cardLabel.innerHTML = '200';
+         card.appendChild(cardLabel);
       } else if ((i >= 12) && (i <= 17)) {
-        row.id = '200-question';
-        card.value = 200;
-        var cardLabel = document.createElement('h2');
-        cardLabel.innerHTML = '200';
-        card.appendChild(cardLabel);
-      } else if ((i >= 18) && (i <= 23)) {
         row.id = '300-question';
         card.value = 300;
         var cardLabel = document.createElement('h2');
         cardLabel.innerHTML = '300';
         card.appendChild(cardLabel);
-      } else if ((i >= 24) && (i <= 29)) {
+      } else if ((i >= 18) && (i <= 23)) {
         row.id = '400-question';
         card.value = 400;
         var cardLabel = document.createElement('h2');
         cardLabel.innerHTML = '400';
         card.appendChild(cardLabel);
-      } else if ((i >= 30) && (i <= 35)){
+      } else if ((i >= 24) && (i <= 29)) {
         row.id = '500-question';
         card.value = 500;
         var cardLabel = document.createElement('h2');
         cardLabel.innerHTML = '500';
         card.appendChild(cardLabel);
-        }
-
+        } 
       }
       //ends the for loop
 
@@ -168,6 +183,7 @@ var answers =
     for ( var i = 0; i < gameBoard.length; i++) {
       // var label = document.getElementsByClassName()
       cards[i].addEventListener('click', function() {
+        console.log('clicked.');
         this.disabled = true;
         //once you click a card, you can't click it again.
         var cardAmount = parseInt(this.value);

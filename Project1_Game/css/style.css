@@ -8,25 +8,24 @@ body {
   color: #B8B800;
 }
 
-.container {
-  width: 1200px;
-  height: 700px;
-  border: 1px solid black;
-  margin-left: 100px;
-}
-
-#first-board {
-
-}
-
 .card {
   position: relative;
   width: 150px;
-  height: 150px;
+  height: 100px;
   font-size: 20px;
   display: inline-block;
   border-radius: 5px;
   background-color: #5C85AD;
+}
+
+.category {
+  position: relative;
+  width: 50px;
+  height: 100px;
+  font-size: 20px;
+  display: inline-block;
+  border-radius: 5px;
+  background-color: pink;
 }
 
 h2 {
@@ -46,10 +45,10 @@ h2 {
 
 .row {
   width: 900px;
-  height: 150px;
+  height: 100px;
   border: solid 1px black;
+  margin: 0 auto;
 }
-
 
 .column {
   width: 140px;
@@ -74,7 +73,6 @@ h2 {
   background-color: #4747FF;
 }
 
-
 /*.question {
   font-family: "Helvetica", sans-serif;
   text-align: center;
@@ -89,7 +87,7 @@ h2 {
 }*/
 
 #score-box {
-  width: 300px;
+  width: 150px;
   height: 300px;
   border: 2px solid black;
   float: right;
@@ -97,13 +95,13 @@ h2 {
 }
 
 #player-one-scorebox {
-  width: 300px;
+  width: 150px;
   height: 100px;
   border: 1px dotted #5C85AD;
 }
 
 #player-two-scorebox {
-  width: 300px;
+  width: 150px;
   height: 100px;
   border: 1px dotted #5C85AD;
 }
