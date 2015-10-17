@@ -171,7 +171,53 @@ var answers =
         this.disabled = true;
         //once you click a card, you can't click it again.
         var cardAmount = parseInt(this.value);
-        this.className = this.className + ' ' + 1;
+        this.classList.add(1);
+        // var rawCardNumber = this.classList[1];
+        // console.log(rawCardNumber);
+        // var winSum = 0;
+
+        var checkForWin = function() {
+          console.log('checking for win.');
+          if ( playerOneScore > playerTwoScore ) {
+            alert('Player One Wins!!');
+          } else {
+            alert('Player Two Wins!!')
+          }
+        };
+
+        var isGameOver = function() {
+          var clickedCards = document.getElementsByClassName(1);
+          console.log(clickedCards);
+          var winSum = 0;
+          for ( i = 0; i < clickedCards.length; i++) {
+            var rawCardNumber = clickedCards[i].classList[1];
+            console.log(rawCardNumber);
+            winSum += parseInt(rawCardNumber);
+            console.log(winSum);
+          }
+          if (winSum === 5) {
+            checkForWin();
+            }
+          };
+
+          // winSum += rawCardNumber;
+          // console.log(winSum);
+            // winSum += rawCardNumber;
+            // console.log(winSum);
+
+            // console.log(winSum);
+            // var rawCardNumber = parseInt(cardNumber[i]);
+            // console.log(cardNumber);
+            // winSum += cardNumber;
+            // console.log(winSum);
+          // if (winSum === 30) {
+          //   checkForWin();
+          // }
+
+        //ends isGameOver function
+
+        isGameOver();
+
         //adding 1 to class list to use in checkForWinFunction
         // this.setAttribute('name', 1);
         //give the card a value of 1 to add and check for win
@@ -199,6 +245,7 @@ var answers =
           var playerGuess = window.prompt(player + ', type your answer here:');
           var playerOneBoard = document.getElementsByClassName('score')[0];
           var playerTwoBoard = document.getElementsByClassName('score')[1];
+          //to tally clicked cards for checkWin function
 
           var getScore = function() {
             if ((playerGuess === answer) && (player === 'playerOne')) {
@@ -222,36 +269,6 @@ var answers =
           //ends getScore function
           getScore();
           }, 1000)
-
-
-
-          var isGameOver = function() {
-            var winSum = 0;
-            for (i = 0; i < cards.length; i++) {
-              var rawCardNumber = parseInt(cards[i].classList[1]);
-              winSum += rawCardNumber;
-              console.log(winSum);
-              // console.log(winSum);
-              // var rawCardNumber = parseInt(cardNumber[i]);
-              // console.log(cardNumber);
-              // winSum += cardNumber;
-              // console.log(winSum);
-            }
-            if (winSum === 30) {
-              checkForWin();
-            }
-          };
-          //ends isGameOver function
-
-          isGameOver();
-
-          var checkForWin = function() {
-            if ( playerOneScore > playerTwoScore ) {
-              alert('Player One Wins!!');
-            } else {
-              alert('Player Two Wins!!')
-            }
-          };
 
       });
       //ends cards[i].addEventListener
