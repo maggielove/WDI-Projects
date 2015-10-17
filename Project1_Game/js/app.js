@@ -159,7 +159,8 @@ var answers =
 
   var setListeners = function() {
     var cards = document.getElementsByClassName('card');
-    var playerCash = 0; 
+    var playerOneScore = 0;
+    var playerTwoScore = 0;
     var playerGuess;
     for ( var i = 0; i < gameBoard.length; i++) {
       // var label = document.getElementsByClassName()
@@ -175,51 +176,51 @@ var answers =
         question.style.display = '';
         cardLabel.style.display = 'none';
 
-
-
         setTimeout(function(){
 
           var playerGuess = window.prompt('Type your answer here:');
-          if ( playerGuess === answer) {
-            playerCash += cardAmount;
-            window.alert('Well played!');
-          } else {
-            playerCash -= cardAmount;
-            window.alert('I\'m afraid not.');
-          }
-          console.log(playerCash);
+          var playerOneBoard = document.getElementsByClassName('score')[0];
+          var playerTwoBoard = document.getElementsByClassName('score')[1];
 
-          var getScore = function(player) {
-            if (player === 'playerOne') {
-              var total = document.getElementsByClassName('score')[0];
-              total.innerHTML = '<h5>' + playerCash + '</h5>'
-            } else if (player === 'playerTwo') {
-              var total = document.getElementsByClassName('score')[1];
-              total.innerHTML = '<h5>' + playerCash + '</h5>';
+          var getScore = function() {
+            if ((playerGuess === answer) && (player === 'playerOne')) {
+              console.log('This is the cardAmount: ', cardAmount);
+              console.log('This is P1Score: ', playerOneScore);
+              window.alert('You are correct!');
+              playerOneScore += cardAmount;
+              playerOneBoard.innerHTML = '<h5>' + playerOneScore + '</h5>'
+            } else if ((playerGuess === answer) && (player === 'playerTwo')) {
+              console.log(cardAmount);
+              console.log(playerTwoScore);
+              window.alert('You are correct!');
+              playerTwoScore += cardAmount;
+              playerTwoBoard.innerHTML = '<h5>' + playerTwoScore + '</h5>'
+            } else if ((playerGuess !== answer) && (player === 'playerOne')) {
+              window.alert('Sorry, wrong answer.');
+              console.log(cardAmount);
+              console.log(playerOneScore);
+              playerOneScore -= cardAmount;
+              playerOneBoard.innerHTML = '<h5>' + playerOneScore + '</h5>'
+            } else if ((playerGuess !== answer) && (player === 'playerTwo')) {
+              window.alert('Sorry, wrong answer.');
+              console.log(cardAmount);
+              console.log(playerTwoScore);
+              playerTwoScore -= cardAmount;
+              playerTwoBoard.innerHTML = '<h5>' + playerTwoScore + '</h5>'
             }
           };
+          //ends getScore function
 
-          getScore(player);
-          // var playerOneScore = document.getElementById('player-one-score');
-          // var playerOneScore = document.getElementById('player-two-score');
-        }, 1000)
+          getScore();
 
-
-        // checkAnswer();
-        //   for (var f = 0; f < gameBoard.length; f++) {
-        //   var cardWorth = document.getElementsByTagName('h2')[f];
-        //  };
-        //   console.log(cardWorth);
+          }, 1000)
       });
+      //ends cards[i].addEventListener
     }
+    //ends for loop
   };
+  //ends setListeners function
 
-// need to  link to gameboard!
-//   var checkAnswer = function() {
-//   for ( var i = 0; i < gameBoard.length; i++) {
-//
-//   }
-// }
 
   renderBoard();
   setListeners();
@@ -229,12 +230,21 @@ var answers =
 
 
 
-
-
-    //  make a new if (row % 6 === 0) {
-    //   row.id = '600-question';
-    //   gameBoard[i].value = 600;
-    // } else if (row % 5 === 0) {
-    //   row.id = '500-question';
-    //   gameBoard[i].value = 500;
-    // }
+// if ( playerGuess === answer) {
+//   // playerCash += cardAmount;
+//   // window.alert('Well played!');
+// } else {
+//   playerCash -= cardAmount;
+//   window.alert('Sorry, wrong answer.');
+// }
+// console.log(playerCash);
+//
+// var getScore = function(player) {
+//   if (player === 'playerOne') {
+//     // var playerOneScore = document.getElementsByClassName('score')[0];
+//     // playerOneScore.innerHTML = '<h5>' + playerCash + '</h5>'
+//   } else if (player === 'playerTwo') {
+//     // var playerTwoScore = document.getElementsByClassName('score')[1];
+//     playerTwoScore.innerHTML = '<h5>' + playerCash + '</h5>';
+//   }
+// };
