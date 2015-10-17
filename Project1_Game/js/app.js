@@ -176,29 +176,7 @@ var answers =
         // console.log(rawCardNumber);
         // var winSum = 0;
 
-        var checkForWin = function() {
-          console.log('checking for win.');
-          if ( playerOneScore > playerTwoScore ) {
-            alert('Player One Wins!!');
-          } else {
-            alert('Player Two Wins!!')
-          }
-        };
 
-        var isGameOver = function() {
-          var clickedCards = document.getElementsByClassName(1);
-          console.log(clickedCards);
-          var winSum = 0;
-          for ( i = 0; i < clickedCards.length; i++) {
-            var rawCardNumber = clickedCards[i].classList[1];
-            console.log(rawCardNumber);
-            winSum += parseInt(rawCardNumber);
-            console.log(winSum);
-          }
-          if (winSum === 5) {
-            checkForWin();
-            }
-          };
 
           // winSum += rawCardNumber;
           // console.log(winSum);
@@ -216,7 +194,7 @@ var answers =
 
         //ends isGameOver function
 
-        isGameOver();
+
 
         //adding 1 to class list to use in checkForWinFunction
         // this.setAttribute('name', 1);
@@ -267,7 +245,33 @@ var answers =
             }
           };
           //ends getScore function
+
+          var checkForWin = function() {
+            console.log('checking for win.');
+            if ( playerOneScore > playerTwoScore ) {
+              alert('Player One Wins!!');
+            } else {
+              alert('Player Two Wins!!')
+            }
+          };
+
+          var isGameOver = function() {
+            var clickedCards = document.getElementsByClassName(1);
+            console.log(clickedCards);
+            // var winSum = 0;
+            // for ( i = 0; i < clickedCards.length; i++) {
+            //   var rawCardNumber = clickedCards[i].classList[1];
+            //   console.log(rawCardNumber);
+            //   winSum += parseInt(rawCardNumber);
+            //   console.log(winSum);
+            // }
+            if (clickedCards.length === 30) {
+              checkForWin();
+              }
+            };
+
           getScore();
+          isGameOver();
           }, 1000)
 
       });
