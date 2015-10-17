@@ -105,6 +105,10 @@ var answers =
 
        if ((i >= 0) && (i <= 5)) {
         row.id = 'category-name';
+        // var makeCategories = function() {
+        //   this.disabled = true;
+        //   };
+        //   makeCategories();
        }
        else if ((i >= 6) && (i <=11)) {
         row.id = '100-question';
@@ -112,7 +116,6 @@ var answers =
         var cardLabel = document.createElement('h2');
         cardLabel.innerHTML = '100';
         card.appendChild(cardLabel);
-
       } else if ((i >= 12) && (i <= 17)) {
         row.id = '200-question';
         card.value = 200;
@@ -165,8 +168,23 @@ var answers =
     for ( var i = 0; i < gameBoard.length; i++) {
       // var label = document.getElementsByClassName()
       cards[i].addEventListener('click', function() {
+        this.disabled = true;
+        //once you click a card, you can't click it again.
         var cardAmount = parseInt(this.value);
-        console.log(cardAmount);
+        this.className = this.className + ' ' + 1;
+        //adding 1 to class list to use in checkForWinFunction
+        // this.setAttribute('name', 1);
+        //give the card a value of 1 to add and check for win
+        // console.log(this.name);
+        // var sumCards = function() {
+        //   // var winSum;
+        //   // winSum += this.name;
+        //   console.log(this.name);
+        // }
+
+        // sumCards();
+        //will use name attribute to sum the cards in each row, check for win once board is 'full'
+
         var cardLabel = this.children[0];
         var question = document.createElement('div');
         var answer = answers[ this.id - 6];
@@ -178,42 +196,63 @@ var answers =
 
         setTimeout(function(){
 
-          var playerGuess = window.prompt('Type your answer here:');
+          var playerGuess = window.prompt(player + ', type your answer here:');
           var playerOneBoard = document.getElementsByClassName('score')[0];
           var playerTwoBoard = document.getElementsByClassName('score')[1];
 
           var getScore = function() {
             if ((playerGuess === answer) && (player === 'playerOne')) {
-              console.log('This is the cardAmount: ', cardAmount);
-              console.log('This is P1Score: ', playerOneScore);
               window.alert('You are correct!');
               playerOneScore += cardAmount;
               playerOneBoard.innerHTML = '<h5>' + playerOneScore + '</h5>'
             } else if ((playerGuess === answer) && (player === 'playerTwo')) {
-              console.log(cardAmount);
-              console.log(playerTwoScore);
               window.alert('You are correct!');
               playerTwoScore += cardAmount;
               playerTwoBoard.innerHTML = '<h5>' + playerTwoScore + '</h5>'
             } else if ((playerGuess !== answer) && (player === 'playerOne')) {
               window.alert('Sorry, wrong answer.');
-              console.log(cardAmount);
-              console.log(playerOneScore);
               playerOneScore -= cardAmount;
               playerOneBoard.innerHTML = '<h5>' + playerOneScore + '</h5>'
             } else if ((playerGuess !== answer) && (player === 'playerTwo')) {
               window.alert('Sorry, wrong answer.');
-              console.log(cardAmount);
-              console.log(playerTwoScore);
               playerTwoScore -= cardAmount;
               playerTwoBoard.innerHTML = '<h5>' + playerTwoScore + '</h5>'
             }
           };
           //ends getScore function
-
           getScore();
-
           }, 1000)
+
+
+
+          var isGameOver = function() {
+            var winSum = 0;
+            for (i = 0; i < cards.length; i++) {
+              var rawCardNumber = parseInt(cards[i].classList[1]);
+              winSum += rawCardNumber;
+              console.log(winSum);
+              // console.log(winSum);
+              // var rawCardNumber = parseInt(cardNumber[i]);
+              // console.log(cardNumber);
+              // winSum += cardNumber;
+              // console.log(winSum);
+            }
+            if (winSum === 30) {
+              checkForWin();
+            }
+          };
+          //ends isGameOver function
+
+          isGameOver();
+
+          var checkForWin = function() {
+            if ( playerOneScore > playerTwoScore ) {
+              alert('Player One Wins!!');
+            } else {
+              alert('Player Two Wins!!')
+            }
+          };
+
       });
       //ends cards[i].addEventListener
     }
@@ -248,3 +287,9 @@ var answers =
 //     playerTwoScore.innerHTML = '<h5>' + playerCash + '</h5>';
 //   }
 // };
+
+// card.name = 1;
+// var rowOneSum = function {
+//   var sum;
+//   sum += cards[i].name;
+// }
