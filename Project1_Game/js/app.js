@@ -2,9 +2,11 @@ window.onload = function() {
 
   var players = [];
 
+  var waitingForKeypress = true;
+
   var categories =
     [
-      "Cat", "Cat", "Cat","Cat", "Cat", "Cat"
+      "Y Before E", "Cat2", "Cat3","Cat4", "Cat5", "Cat6"
     ]
 
   var gameBoard =
@@ -89,10 +91,12 @@ window.onload = function() {
         document.getElementById('ding').play();
         players.push('playerOne');
         player = players[0];
+        waitingForKeypress = false;
       } else if (e.which === 76) {
         document.getElementById('ding-2').play();
         players.push('playerTwo');
         player = players[0];
+        waitingForKeypress = false;
         // }
       } else {
         alert('Please press A or L.');
@@ -184,8 +188,10 @@ window.onload = function() {
 
     for ( var i = 0; i < gameBoard.length; i++) {
       cards[i].addEventListener('click', function() {
+        waitingForKeypress = true;
         players = [];
         //clears players array so each time you click a card, you only have max of two players in the array
+        // console.log(players);
         this.disabled = true;
         //once you click a card, you can't click it again.
         var cardAmount = parseInt(this.value);
@@ -201,12 +207,13 @@ window.onload = function() {
 
         setTimeout(function(){
 
-          var playerGuess = window.prompt(player + ', type your answer here:');
-          var playerOneBoard = document.getElementsByClassName('score')[0];
-          var playerTwoBoard = document.getElementsByClassName('score')[1];
-          //to tally clicked cards for checkWin function
+           if (waitingForKeypress === false) {
+            var playerGuess = window.prompt(player + ', type your answer here:');
+            var playerOneBoard = document.getElementsByClassName('score')[0];
+            var playerTwoBoard = document.getElementsByClassName('score')[1];
+            //to tally clicked cards for checkWin function
 
-          var getScore = function() {
+           var getScore = function() {
             if ((playerGuess === answer) && (player === 'playerOne')) {
               window.alert('You are correct!');
               playerOneScore += cardAmount;
@@ -246,7 +253,10 @@ window.onload = function() {
 
           getScore();
           isGameOver();
-          }, 1000)
+          }
+          //ends if waitingForKeypress statement
+        }, 1000)
+          //ends setTimeout
 
       });
       //ends cards[i].addEventListener
