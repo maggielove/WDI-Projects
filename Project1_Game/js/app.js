@@ -115,7 +115,11 @@ window.onload = function() {
       var category = document.createElement('div');
       category.className = 'category';
       category.setAttribute('id', i);
-      category.innerHTML = categories[i];
+      var categoryText = document.createElement('p');
+      categoryText.className = 'category-text';
+      categoryText.innerHTML = categories[i];
+      category.appendChild(categoryText);
+      // category.innerHTML = categories[i];
       categoryRow.appendChild(category);
       console.log(category);
     }
