@@ -12,7 +12,7 @@ window.onload = function() {
 
   var categories =
     [
-      "Blahblah", "&nbsp", "&nbsp","&nbsp", "&nbsp", "&nbsp",
+      "Cat", "Cat", "Cat","Cat", "Cat", "Cat"
     ]
 
   var gameBoard =
@@ -92,6 +92,23 @@ var answers =
     "A30"
   ];
 
+  var renderCategories = function() {
+    var categoryRow = document.createElement('div');
+    categoryRow.id = 'category-row';
+    document.body.appendChild(categoryRow);
+    for (var i = 0; i < categories.length; i++) {
+      var category = document.createElement('div');
+      category.className = 'category';
+      category.setAttribute('id', i);
+      categoryRow.appendChild(category);
+      console.log(category);
+      // row.appendChild(category);
+    }
+  };
+  // ends renderCategories();
+
+  renderCategories();
+
   var renderBoard = function() {
     // var container = document.createElement('div');
     // container.id = 'container';
@@ -156,7 +173,7 @@ var answers =
         var cardLabel = document.createElement('h2');
         cardLabel.innerHTML = '500';
         card.appendChild(cardLabel);
-        } 
+        }
       }
       //ends the for loop
 
@@ -227,9 +244,9 @@ var answers =
 
         var cardLabel = this.children[0];
         var question = document.createElement('div');
-        var answer = answers[ this.id - 6];
+        var answer = answers[this.id];
         question.className = 'question';
-        question.innerHTML = questions[ this.id - 6 ]
+        question.innerHTML = questions[this.id]
         this.appendChild(question);
         question.style.display = '';
         cardLabel.style.display = 'none';
@@ -299,6 +316,7 @@ var answers =
 
 
   renderBoard();
+
   setListeners();
 
 };
