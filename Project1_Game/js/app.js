@@ -1,14 +1,6 @@
-
-
-// function checkAnswer() {
-//   if (input answer === "sire") {
-//     playerCash += question.value;
-//   }
-// }
-
- var player = '';
-
 window.onload = function() {
+
+  var players = [];
 
   var categories =
     [
@@ -92,6 +84,27 @@ var answers =
     "A30"
   ];
 
+  window.addEventListener('keyup', function(e) {
+      if (e.which === 65) {
+        var ding = document.getElementById('ding').play();
+        players.push('playerOne');
+        player = players[0];
+      } else if (e.which === 76) {
+        var ding = document.getElementById('ding-2').play();
+        players.push('playerTwo');
+        player = players[0];
+        // }
+      } else {
+        alert('Please press A or L.');
+      }
+      console.log(player);
+      console.log(players);
+      console.log(players.length - 1);
+      // console.log(e);
+      // return players[this.length - 2];
+  })
+  //ends keyup function
+
   var renderCategories = function() {
     var categoryRow = document.createElement('div');
     categoryRow.id = 'category-row';
@@ -100,14 +113,14 @@ var answers =
       var category = document.createElement('div');
       category.className = 'category';
       category.setAttribute('id', i);
+      category.innerHTML = categories[i];
       categoryRow.appendChild(category);
       console.log(category);
-      // row.appendChild(category);
     }
   };
   // ends renderCategories();
 
-  renderCategories();
+  renderCategories(); 
 
   var renderBoard = function() {
     // var container = document.createElement('div');
@@ -127,27 +140,12 @@ var answers =
         card.innerHTML = gameBoard[i];
         row.appendChild(card);
 
-        // if ((i >= 0) && (i <=5)) {
-        //   var category = document.createElement('div');
-        //   category.setAttribute('id', i);
-        //   category.className = 'category';
-        //   category.innerHTML = gameBoard[i];
-        //   var categoryRow = document.getElementsByClassName('row')[0];
-        //   console.log('This is category row', categoryRow);
-        //   categoryRow.appendChild(category);
-        //   console.log(category);
-
-
        if ((i >= 0) && (i <= 5)) {
          row.id = '100-question';
          card.value = 100;
          var cardLabel = document.createElement('h2');
          cardLabel.innerHTML = '100';
          card.appendChild(cardLabel);
-        // var makeCategories = function() {
-        //   this.disabled = true;
-        //   };
-        //   makeCategories();
        }
        else if ((i >= 6) && (i <=11)) {
          row.id = '200-question';
@@ -177,18 +175,6 @@ var answers =
       }
       //ends the for loop
 
-      window.addEventListener('keyup', function(e) {
-        if (e.which === 65) {
-          player = 'playerOne';
-        } else if (e.which === 76) {
-          player = 'playerTwo';
-        } else {
-          alert('Please press A or L.');
-        }
-        console.log(player);
-        // return player;
-      })
-
     };
   //ends renderBoard function
 
@@ -197,51 +183,14 @@ var answers =
     var playerOneScore = 0;
     var playerTwoScore = 0;
     var playerGuess;
+
     for ( var i = 0; i < gameBoard.length; i++) {
-      // var label = document.getElementsByClassName()
       cards[i].addEventListener('click', function() {
-        console.log('clicked.');
+        players = [];
         this.disabled = true;
         //once you click a card, you can't click it again.
         var cardAmount = parseInt(this.value);
         this.classList.add(1);
-        // var rawCardNumber = this.classList[1];
-        // console.log(rawCardNumber);
-        // var winSum = 0;
-
-
-
-          // winSum += rawCardNumber;
-          // console.log(winSum);
-            // winSum += rawCardNumber;
-            // console.log(winSum);
-
-            // console.log(winSum);
-            // var rawCardNumber = parseInt(cardNumber[i]);
-            // console.log(cardNumber);
-            // winSum += cardNumber;
-            // console.log(winSum);
-          // if (winSum === 30) {
-          //   checkForWin();
-          // }
-
-        //ends isGameOver function
-
-
-
-        //adding 1 to class list to use in checkForWinFunction
-        // this.setAttribute('name', 1);
-        //give the card a value of 1 to add and check for win
-        // console.log(this.name);
-        // var sumCards = function() {
-        //   // var winSum;
-        //   // winSum += this.name;
-        //   console.log(this.name);
-        // }
-
-        // sumCards();
-        //will use name attribute to sum the cards in each row, check for win once board is 'full'
-
         var cardLabel = this.children[0];
         var question = document.createElement('div');
         var answer = answers[this.id];
@@ -291,13 +240,6 @@ var answers =
           var isGameOver = function() {
             var clickedCards = document.getElementsByClassName(1);
             console.log(clickedCards);
-            // var winSum = 0;
-            // for ( i = 0; i < clickedCards.length; i++) {
-            //   var rawCardNumber = clickedCards[i].classList[1];
-            //   console.log(rawCardNumber);
-            //   winSum += parseInt(rawCardNumber);
-            //   console.log(winSum);
-            // }
             if (clickedCards.length === 30) {
               checkForWin();
               }
@@ -316,7 +258,6 @@ var answers =
 
 
   renderBoard();
-
   setListeners();
 
 };
