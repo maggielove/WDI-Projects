@@ -48,14 +48,12 @@ h2 {
 .row {
   width: 900px;
   height: 100px;
-  border: solid 1px black;
   margin: 0 auto;
 }
 
 #category-row {
   width: 900px;
   height: 70px;
-  border: solid 1px black;
   margin: 0 auto;
 }
 

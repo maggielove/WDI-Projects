@@ -16,81 +16,81 @@ window.onload = function() {
       "&nbsp", "&nbsp", "&nbsp", "&nbsp", "&nbsp", "&nbsp"
     ];
 
-var questions =
-  [
-    "Question 1",
-    "Question 2",
-    "Question 3",
-    "Question 4",
-    "Question 5",
-    "Question 6",
-    "Question 7",
-    "Question 8",
-    "Question 9",
-    "Question 10",
-    "Question 11",
-    "Question 12",
-    "Question 13",
-    "Question 14",
-    "Question 15",
-    "Question 16",
-    "Question 17",
-    "Question 18",
-    "Question 19",
-    "Question 20",
-    "Question 21",
-    "Question 22",
-    "Question 23",
-    "Question 24",
-    "Question 25",
-    "Question 26",
-    "Question 27",
-    "Question 28",
-    "Question 29",
-    "Question 30",
-  ];
+    var questions =
+      [
+        "Question 1",
+        "Question 2",
+        "Question 3",
+        "Question 4",
+        "Question 5",
+        "Question 6",
+        "Question 7",
+        "Question 8",
+        "Question 9",
+        "Question 10",
+        "Question 11",
+        "Question 12",
+        "Question 13",
+        "Question 14",
+        "Question 15",
+        "Question 16",
+        "Question 17",
+        "Question 18",
+        "Question 19",
+        "Question 20",
+        "Question 21",
+        "Question 22",
+        "Question 23",
+        "Question 24",
+        "Question 25",
+        "Question 26",
+        "Question 27",
+        "Question 28",
+        "Question 29",
+        "Question 30",
+      ];
 
-var answers =
-  [
-    "A1",
-    "A2",
-    "A3",
-    "A4",
-    "A5",
-    "A6",
-    "A7",
-    "A8",
-    "A9",
-    "A10",
-    "A11",
-    "A12",
-    "A13",
-    "A14",
-    "A15",
-    "A16",
-    "A17",
-    "A18",
-    "A19",
-    "A20",
-    "A21",
-    "A22",
-    "A23",
-    "A24",
-    "A25",
-    "A26",
-    "A27",
-    "A28",
-    "A29",
-    "A30"
-  ];
+    var answers =
+      [
+        "A1",
+        "A2",
+        "A3",
+        "A4",
+        "A5",
+        "A6",
+        "A7",
+        "A8",
+        "A9",
+        "A10",
+        "A11",
+        "A12",
+        "A13",
+        "A14",
+        "A15",
+        "A16",
+        "A17",
+        "A18",
+        "A19",
+        "A20",
+        "A21",
+        "A22",
+        "A23",
+        "A24",
+        "A25",
+        "A26",
+        "A27",
+        "A28",
+        "A29",
+        "A30"
+      ];
 
   window.addEventListener('keyup', function(e) {
       if (e.which === 65) {
-        var ding = document.getElementById('ding').play();
+        document.getElementById('ding').play();
         players.push('playerOne');
         player = players[0];
       } else if (e.which === 76) {
-        var ding = document.getElementById('ding-2').play();
+        document.getElementById('ding-2').play();
         players.push('playerTwo');
         player = players[0];
         // }
@@ -98,8 +98,6 @@ var answers =
         alert('Please press A or L.');
       }
       console.log(player);
-      console.log(players);
-      console.log(players.length - 1);
       // console.log(e);
       // return players[this.length - 2];
   })
@@ -187,6 +185,7 @@ var answers =
     for ( var i = 0; i < gameBoard.length; i++) {
       cards[i].addEventListener('click', function() {
         players = [];
+        //clears players array so each time you click a card, you only have max of two players in the array
         this.disabled = true;
         //once you click a card, you can't click it again.
         var cardAmount = parseInt(this.value);
@@ -256,36 +255,36 @@ var answers =
   };
   //ends setListeners function
 
-
   renderBoard();
   setListeners();
 
+  // var startGame = function() {
+    var newGameButton = document.getElementById('start');
+    console.log(newGameButton);
+    newGameButton.addEventListener('click', function() {
+      // var cards = document.getElementsByClassName('card');
+      var categoryRow = document.getElementById('category-row');
+      document.body.removeChild(categoryRow);
+      var rows = document.getElementsByClassName('row');
+      for (i = rows.length; i > 0; i --) {
+        console.log(rows);
+        document.body.removeChild(rows[0]);
+        //clear cards currently in board by removing rows one by one.
+      }
+      var playerOneBoard = document.getElementsByClassName('score')[0];
+      var playerTwoBoard = document.getElementsByClassName('score')[1];
+      var playerOneScore = 0;
+      var playerTwoScore = 0;
+      playerOneBoard.innerHTML = '<h5>' + playerOneScore + '</h5>';
+      playerTwoBoard.innerHTML = '<h5>' + playerTwoScore + '</h5>';
+      renderCategories();
+      renderBoard();
+      setListeners();
+    });
+  // };
+
+  // startGame();
+
+
 };
 //ends window.onload
-
-
-
-// if ( playerGuess === answer) {
-//   // playerCash += cardAmount;
-//   // window.alert('Well played!');
-// } else {
-//   playerCash -= cardAmount;
-//   window.alert('Sorry, wrong answer.');
-// }
-// console.log(playerCash);
-//
-// var getScore = function(player) {
-//   if (player === 'playerOne') {
-//     // var playerOneScore = document.getElementsByClassName('score')[0];
-//     // playerOneScore.innerHTML = '<h5>' + playerCash + '</h5>'
-//   } else if (player === 'playerTwo') {
-//     // var playerTwoScore = document.getElementsByClassName('score')[1];
-//     playerTwoScore.innerHTML = '<h5>' + playerCash + '</h5>';
-//   }
-// };
-
-// card.name = 1;
-// var rowOneSum = function {
-//   var sum;
-//   sum += cards[i].name;
-// }
