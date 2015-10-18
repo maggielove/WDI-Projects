@@ -1,5 +1,6 @@
 body {
-  font-family: "Helvetica", sans-serif;
+  font-family: 'Roboto', sans-serif;
+  color: #2D3131;
   background: url('../images/worn_dots.png');
 }
 
@@ -24,6 +25,7 @@ body {
 
 .card {
   position: relative;
+  color: #383D3D;
   width: 170px;
   height: 100px;
   font-size: 20px;
@@ -47,10 +49,11 @@ body {
 
 .category-text {
   font-size: 18px;
+  font-weight: bold;
   position: absolute;
   padding: 5px;
   margin: 0 auto;
-  margin-left: 40px;
+  margin-left: 10px;
   margin-top: 0px;
   margin-right: 20px;
 }
@@ -64,14 +67,12 @@ h2 {
 
 .question {
   font-size: 10px;
+  font-family: 'Roboto', sans-serif;
   width: 160px;
   position: absolute;
   margin-top: -55px;
   margin-left: 0px;
   font-size: 12px;
-  /*top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);*/
   color: black;
 }
 
@@ -90,6 +91,7 @@ h2 {
 #score-box {
   width: 150px;
   height: 260px;
+  font-weight: bold;
   border: 2px solid #444449;
   border-radius: 5px;
   float: right;
