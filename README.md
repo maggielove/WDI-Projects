@@ -1,7 +1,7 @@
 [Hosted Working Game](http://maggielove.github.io/WDI-Projects/)
 
 # Introduction #
-For my game, I made a version of Jeopardy. The game consists of a 6 x 6 board of 30 total questions across 6 categories. (I found all questions and answers on [J! Archive](http://j-archive.com/) Players click cards to view questions, buzz in, and type their answers. 
+For my game, I made a version of Jeopardy. The game consists of a 6 x 6 board of 30 total questions across 6 categories. (I found all questions and answers on [J! Archive](http://j-archive.com/).) Players click cards to view questions, buzz in, and type their answers. 
 
 #Approach#
 Since the majority of the web page consists of these clickable cards, I spent most of my time programming the JavaScript. First I created the board itself by setting a gameBoard array and looping over this array to create a cards (button elements) that are grouped by rows. (Cards are grouped by rows because each row has the same number of points.) 
