@@ -3,158 +3,51 @@
   <head>
     <meta charset="utf-8">
     <title>Jeopardy!</title>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
     <script src="js/app.js"></script>
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-    <h1 id=title>Jeopardy!</h1>
-    <!-- <div class="container"> -->
-        <!-- <div id="first-board">
-          <div class="column">
-            <h1 class="category">4-Letter Verbs</h1>
-              <ul class="question-list">
-                <li class="question" id="question-1-1">
-                  <span class="amount">$100</span>
-                  <span class="clue">Used especially of stallions, it means to father a child.</span>
-                </li>
-                <li class="question">
-                  $200
-                  As a noun, it's the ridge on the fingerboard of a guitar; as a verb, it means to worry.
-                </li>
-                <li class="question">
-                  $300
-                  Helen Reddy sang, "I am woman, hear me" do this
-                </li>
-                <li class="question">
-                  $400
-                  To decrease gradually in intensity, suhc as the moon in passing from full to new.
-                </li>
-                <li class="question">
-                  $500
-                 Itemize, or what a ship does when it tilts to one side.
-                </li>
-              </ul>
-            </div>
-
-          <div class="column">
-            <h1 class="category">Category 2</h1>
-              <ul class="question-list">
-                <li class="question">
-                  $100
-                </li>
-                <li class="question">
-                  $200
-                </li>
-                <li class="question">
-                  $300
-                </li>
-                <li class="question">
-                  $400
-                </li>
-                <li class="question">
-                  $500
-                </li>
-              </ul>
-            </div>
-
-          <div class="column">
-            <h1 class="category">Category 3</h1>
-              <ul class="question-list">
-                <li class="question">
-                  $100
-                </li>
-                <li class="question">
-                  $200
-                </li>
-                <li class="question">
-                  $300
-                </li>
-                <li class="question">
-                  $400
-                </li>
-                <li class="question">
-                  $500
-                </li>
-              </ul>
-            </div>
-
-          <div class="column">
-            <h1 class="category">Category 4</h1>
-              <ul class="question-list">
-                <li class="question">
-                  $100
-                </li>
-                <li class="question">
-                  $200
-                </li>
-                <li class="question">
-                  $300
-                </li>
-                <li class="question">
-                  $400
-                </li>
-                <li class="question">
-                  $500
-                </li>
-              </ul>
-            </div>
-
-          <div class="column">
-            <h1 class="category">Category 5</h1>
-              <ul class="question-list">
-                <li class="question">
-                  $100
-                </li>
-                <li class="question">
-                  $200
-                </li>
-                <li class="question">
-                  $300
-                </li>
-                <li class="question">
-                  $400
-                </li>
-                <li class="question">
-                  $500
-                </li>
-              </ul>
-            </div>
-
-          <div class="column">
-            <h1 class="category">Category 6</h1>
-              <ul class="question-list">
-                <li class="question">
-                  $100
-                </li>
-                <li class="question">
-                  $200
-                </li>
-                <li class="question">
-                  $300
-                </li>
-                <li class="question">
-                  $400
-                </li>
-                <li class="question">
-                  $500
-                </li>
-              </ul>
-            </div>
-
-        </div> -->
-    <!-- </div> -->
-
-    <!-- <div class="container">
-        <div id="secondBoard">
+    <h1 id="title">Jeopardy!</h1>
+    <button id="start">Start Game</button>
+    <audio id="ding">
+      <source src=sound/ding-sound.mp3>
+    </audio>
+    <audio id="ding-2">
+      <source src=sound/ding-sound-2.mp3>
+    </audio>
+    <div id="score-box">
+      <h3>Scores</h3>
+      <div id="player-one-scorebox">
+        <h4>Player One</h4>
+        <div class="score">
         </div>
+      </div>
+      <div id="player-two-scorebox">
+        <h4>Player Two</h4>
+        <div class="score">
+      </div>
     </div>
-
-    <div class="container">
-        <div id="thirdBoard">
-        </div>
-    </div> -->
-
-
+    </div>
+    <div id="instructions">
+      <div id="exit">x</div>
+      <h3> How To Play: </h3>
+      <ul>
+        <li>There are two players, Player One and Player Two.</li>
+        <li>The board has a total of 30 questions across 6 categories. The more difficult a question is, the more it is worth.</li>
+        <li>To start, pick which player will go first. The starting player picks the first card by clicking on it to reveal the question.</li>
+        <li>Once the question is revealed, players have 6 seconds to read the card and buzz in if they would like to answer. (To 'buzz', Player One presses the A key and Player Two presses the L key.)</li>
+        <li>After 6 seconds, whichever player buzzed first will have the opportunity to type his or her answer.</li>
+          <ul>
+            <li> If they get the answer right, they gain the points; otherwise, they lose those points.</li>
+            <li>If no one buzzes within those 6 seconds, neither player will have the opportunity to answer the question.</li>
+            <li>When typing answers, players do not need to include "the" or "a". And there's no need to type answers in the form of a question.</li>
+          </ul>
+        <li>If the player answers correctly, he/she chooses the next card. Otherwise the player who got the most recent correct answer chooses the next card.</li>
+        <li>The game ends when all 30 questions have been clicked. The player with the highest score wins.</li>
+        <li>Pressing the Start Game button at any point during the game will reset all questions and player scores.</li>
+    </ul>
+    </div>
  </body>
-
 </html>
