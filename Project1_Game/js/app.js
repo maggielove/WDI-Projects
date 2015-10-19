@@ -1,5 +1,13 @@
 window.onload = function() {
 
+  var exitInstructions = document.getElementById('exit');
+
+  var instructions = document.getElementById('instructions');
+
+  exitInstructions.addEventListener('click', function() {
+    this.parentNode.remove();
+  });
+
   var players = [];
 
   var waitingForKeypress = true;
@@ -97,13 +105,10 @@ window.onload = function() {
         players.push('playerTwo');
         player = players[0];
         waitingForKeypress = false;
-        // }
       } else {
         alert('Please press A or L.');
       }
       console.log(player);
-      // console.log(e);
-      // return players[this.length - 2];
   })
   //ends keyup function
 
@@ -119,7 +124,6 @@ window.onload = function() {
       categoryText.className = 'category-text';
       categoryText.innerHTML = categories[i];
       category.appendChild(categoryText);
-      // category.innerHTML = categories[i];
       categoryRow.appendChild(category);
       console.log(category);
     }
@@ -129,24 +133,18 @@ window.onload = function() {
   renderCategories(); 
 
   var renderBoard = function() {
-    // var container = document.createElement('div');
-    // container.id = 'container';
-    // document.body.appendChild(container);
-
       for (var i = 0; i < gameBoard.length; i++) {
         if (i% 6 === 0) {
           var row = document.createElement('div');
           document.body.appendChild(row);
           row.className='row';
         }
-
         var card = document.createElement('button');
         card.setAttribute('id', i);
         card.className = 'card';
         card.innerHTML = gameBoard[i];
         row.appendChild(card);
-
-       if ((i >= 0) && (i <= 5)) {
+        if ((i >= 0) && (i <= 5)) {
          row.id = '100-question';
          card.value = 100;
          var cardLabel = document.createElement('h2');
@@ -195,7 +193,6 @@ window.onload = function() {
         waitingForKeypress = true;
         players = [];
         //clears players array so each time you click a card, you only have max of two players in the array
-        // console.log(players);
         this.disabled = true;
         //once you click a card, you can't click it again.
         var cardAmount = parseInt(this.value);
@@ -240,13 +237,11 @@ window.onload = function() {
           };
           //ends getScore function
 
-
-
           getScore();
 
           }
           //ends if waitingForKeypress statement
-        }, 1000)
+        }, 6000)
           //ends setTimeout
 
           var checkForWin = function() {
@@ -277,18 +272,15 @@ window.onload = function() {
   renderBoard();
   setListeners();
 
-  // var startGame = function() {
     var newGameButton = document.getElementById('start');
     console.log(newGameButton);
     newGameButton.addEventListener('click', function() {
-      // var cards = document.getElementsByClassName('card');
       var categoryRow = document.getElementById('category-row');
       document.body.removeChild(categoryRow);
       var rows = document.getElementsByClassName('row');
-      for (i = rows.length; i > 0; i --) {
+      for (i = rows.length; i > 0; i--) {
         console.log(rows);
         document.body.removeChild(rows[0]);
-        //clear cards currently in board by removing rows one by one.
       }
       var playerOneBoard = document.getElementsByClassName('score')[0];
       var playerTwoBoard = document.getElementsByClassName('score')[1];
@@ -300,10 +292,5 @@ window.onload = function() {
       renderBoard();
       setListeners();
     });
-  // };
-
-  // startGame();
-
-
 };
 //ends window.onload
